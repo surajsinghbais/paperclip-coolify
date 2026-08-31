@@ -10,6 +10,9 @@ overrides:
   react-dom: ^19.2.8
 
 patchedDependencies:
+  '@agentclientprotocol/claude-agent-acp@0.70.0':
+    hash: fymctidcjqjhi4cj72qtivlxry
+    path: patches/@agentclientprotocol__claude-agent-acp@0.70.0.patch
   '@agentclientprotocol/codex-acp@1.6.2':
     hash: grbydorkxatbzksnwwfuawwtim
     path: patches/@agentclientprotocol__codex-acp@1.6.2.patch
@@ -145,7 +148,7 @@ importers:
     dependencies:
       '@agentclientprotocol/claude-agent-acp':
         specifier: ^0.70.0
-        version: 0.70.0(@anthropic-ai/sdk@0.121.0(zod@4.4.3))(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))
+        version: 0.70.0(patch_hash=fymctidcjqjhi4cj72qtivlxry)(@anthropic-ai/sdk@0.121.0(zod@4.4.3))(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))
       '@anthropic-ai/sdk':
         specifier: 0.121.0
         version: 0.121.0(zod@4.4.3)
@@ -459,6 +462,9 @@ importers:
 
   packages/paperclip-runner:
     dependencies:
+      '@agentclientprotocol/claude-agent-acp':
+        specifier: 0.70.0
+        version: 0.70.0(patch_hash=fymctidcjqjhi4cj72qtivlxry)(@anthropic-ai/sdk@0.121.0(zod@4.4.3))(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))
       '@agentclientprotocol/codex-acp':
         specifier: 1.6.2
         version: 1.6.2(patch_hash=grbydorkxatbzksnwwfuawwtim)
@@ -471,6 +477,9 @@ importers:
       json-schema-to-ts:
         specifier: ^3.1.1
         version: 3.1.1
+      opencode-ai:
+        specifier: 1.18.17
+        version: 1.18.17
     devDependencies:
       '@types/node':
         specifier: ^24.0.0
@@ -974,7 +983,7 @@ importers:
         version: 0.48.0(typescript@7.0.2)
       '@mdxeditor/editor':
         specifier: ^4.2.1
-        version: 4.2.1(@codemirror/language@6.12.4)(@lezer/highlight@1.2.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(yjs@13.6.29)
+        version: 4.2.1(@codemirror/language@6.12.4)(@lezer/highlight@1.2.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(yjs@13.6.32)
       '@paperclipai/adapter-claude-local':
         specifier: workspace:*
         version: link:../packages/adapters/claude-local
@@ -1081,8 +1090,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       yjs:
-        specifier: 13.6.29
-        version: 13.6.29
+        specifier: 13.6.32
+        version: 13.6.32
     devDependencies:
       '@sentry/browser':
         specifier: 10.71.0
@@ -7089,6 +7098,72 @@ packages:
     resolution: {integrity: sha512-NzwMUB6C1D0+Kd+9iMS/H4k+Ck3cTX6Ckyfr/gAGlmvSE1LUQZnEZvWBi4PYmMwH/S5SMeTXnE+9uAz8uF+pWw==}
     engines: {node: '>=20'}
 
+  opencode-ai@1.18.17:
+    resolution: {integrity: sha512-Pc2D3Y6iQ3BAjcKw9E+9J7VTWNazIwFknFfrolufMCrJ0FLxOIZfndoHmJrx4x1oqpK2CPAqK9D2V6nsp6Oebw==}
+    cpu: [arm64, x64]
+    os: [darwin, linux, win32]
+    hasBin: true
+
+  opencode-darwin-arm64@1.18.17:
+    resolution: {integrity: sha512-v04XxT6uevS+/vvr/wgeMA7bhbUBz9YAeWdprEV5T1VmOjczFL45soQYB/8bfzbj8KFXliAaf0jFHU5Plm6VgQ==}
+    cpu: [arm64]
+    os: [darwin]
+
+  opencode-darwin-x64-baseline@1.18.17:
+    resolution: {integrity: sha512-Lb4arv6O49qXuPaGfmiD1mX3YUjA4Ap/VGoBNGwE/GHuGe0g9nXM2MyIpge5042UgWwR3I8WhfHouS4KlNNwVQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  opencode-darwin-x64@1.18.17:
+    resolution: {integrity: sha512-87uufgMSQn9UJsYG5XB4PYumCBNSINjJtm26hCW8OBhi2/tpqbPYpMgW41mKyEgR4/HDvugPZFq3tHyfeRmPzQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  opencode-linux-arm64-musl@1.18.17:
+    resolution: {integrity: sha512-WMXUlzwmtOEnmlFYnq5D2OMpkboHgMxc7obl/6NX8y5N84FI6f0EaSZE9VZnvVKKFGi7QAqr9uFVfLzuwdqE4w==}
+    cpu: [arm64]
+    os: [linux]
+
+  opencode-linux-arm64@1.18.17:
+    resolution: {integrity: sha512-Qhj+dTwYHbRz9BkdoguFSvG/pTVxt7QA7zDf2mt6Vo3iQXUjl5PpFGacjqZNAZcRuXIct3uu8mwiJ/2AZi4D7w==}
+    cpu: [arm64]
+    os: [linux]
+
+  opencode-linux-x64-baseline-musl@1.18.17:
+    resolution: {integrity: sha512-cCWpQgBmadYCnCFIYhX6+yWONWi7oBRXeZz1VlwBy230aAv+OsYo0W9IJI3TsG4t9Q0/fBznPl00sfFfvU1B8g==}
+    cpu: [x64]
+    os: [linux]
+
+  opencode-linux-x64-baseline@1.18.17:
+    resolution: {integrity: sha512-CY6fePJTZY8ycjFn7gkwgind6jePaWevtTQ+1RJq81lOsKj7WuA/NTBtg3lTSoJbRuHzK5AAq7bgeGRVUUQ+pg==}
+    cpu: [x64]
+    os: [linux]
+
+  opencode-linux-x64-musl@1.18.17:
+    resolution: {integrity: sha512-Qp+DkKcJr+kAvHQENs5h1GZ7ylfnykMDCacxF7GQkdi/nEE2vr/olMB9bWFU4jt5Y1+T6J4ZkeowetSXKKcALA==}
+    cpu: [x64]
+    os: [linux]
+
+  opencode-linux-x64@1.18.17:
+    resolution: {integrity: sha512-HkZ9tAWdWGerHetlC0cgW6qmpXNM5J2IAXGufZeLL2Ls05UpNJBO1Xvv9s3HQAXSRI1RPoK9eJrbKLhNGCCyiw==}
+    cpu: [x64]
+    os: [linux]
+
+  opencode-windows-arm64@1.18.17:
+    resolution: {integrity: sha512-Xz3xZOXNioAR+pltZ9n+1EfsfZPYxVxv8OcTSPeaMGuzPMbvXAg2d+g7qHMAg0GUFW/HCB4x8h2NWm3lDWsI4w==}
+    cpu: [arm64]
+    os: [win32]
+
+  opencode-windows-x64-baseline@1.18.17:
+    resolution: {integrity: sha512-1odjwEnRQ+W12b7G/tBvbyyj3UDo2zdg4sul2aIHlMmKbHk4M0WEBDBQ+Q9S83N2oxRvIpmGKqOomVCy1aoHkA==}
+    cpu: [x64]
+    os: [win32]
+
+  opencode-windows-x64@1.18.17:
+    resolution: {integrity: sha512-LzS37g33tw46RVdwHy2f9FHeS7ljfg5fxjnhYeZygibF3kZAwk1XgvmNhifj+RkEV91WuBzhDIS+uG5OuUsC3w==}
+    cpu: [x64]
+    os: [win32]
+
   os-paths@4.4.0:
     resolution: {integrity: sha512-wrAwOeXp1RRMFfQY8Sy7VaGVmPocaLwSFOYCGKSyo8qmJ+/yaafCl5BCA1IQZWqFSRBrKDYFeR9d/VyQzfH/jg==}
     engines: {node: '>= 6.0'}
@@ -8256,8 +8331,8 @@ packages:
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
-  yjs@13.6.29:
-    resolution: {integrity: sha512-kHqDPdltoXH+X4w1lVmMtddE3Oeqq48nM40FD5ojTd8xYhQpzIDcfE2keMSU5bAgRPJBe225WTUdyUgj1DtbiQ==}
+  yjs@13.6.32:
+    resolution: {integrity: sha512-lfiJIIC4Xayt5ItynE407ehlE03pCjeOc4hkR4yxxvvNJ4kuiN25B0g+Qp8XagYz361LLL7DCzR5bvFJ81QKtQ==}
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
 
   zod-to-json-schema@3.25.2:
@@ -8299,7 +8374,7 @@ snapshots:
 
   '@adobe/css-tools@4.5.0': {}
 
-  '@agentclientprotocol/claude-agent-acp@0.70.0(@anthropic-ai/sdk@0.121.0(zod@4.4.3))(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))':
+  '@agentclientprotocol/claude-agent-acp@0.70.0(patch_hash=fymctidcjqjhi4cj72qtivlxry)(@anthropic-ai/sdk@0.121.0(zod@4.4.3))(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))':
     dependencies:
       '@agentclientprotocol/sdk': 1.3.0(zod@4.4.3)
       '@anthropic-ai/claude-agent-sdk': 0.3.232(@anthropic-ai/sdk@0.121.0(zod@4.4.3))(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))(zod@4.4.3)
@@ -9839,7 +9914,7 @@ snapshots:
     optionalDependencies:
       typescript: 7.0.2
 
-  '@lexical/react@0.48.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(yjs@13.6.29)':
+  '@lexical/react@0.48.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(yjs@13.6.32)':
     dependencies:
       '@floating-ui/react': 0.27.20(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@lexical/a11y': 0.48.0(typescript@7.0.2)
@@ -9859,13 +9934,13 @@ snapshots:
       '@lexical/table': 0.48.0(typescript@7.0.2)
       '@lexical/text': 0.48.0(typescript@7.0.2)
       '@lexical/utils': 0.48.0(typescript@7.0.2)
-      '@lexical/yjs': 0.48.0(typescript@7.0.2)(yjs@13.6.29)
+      '@lexical/yjs': 0.48.0(typescript@7.0.2)(yjs@13.6.32)
       lexical: 0.48.0(typescript@7.0.2)
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
     optionalDependencies:
       typescript: 7.0.2
-      yjs: 13.6.29
+      yjs: 13.6.32
 
   '@lexical/rich-text@0.48.0(typescript@7.0.2)':
     dependencies:
@@ -9912,12 +9987,12 @@ snapshots:
     optionalDependencies:
       typescript: 7.0.2
 
-  '@lexical/yjs@0.48.0(typescript@7.0.2)(yjs@13.6.29)':
+  '@lexical/yjs@0.48.0(typescript@7.0.2)(yjs@13.6.32)':
     dependencies:
       '@lexical/internal': 0.48.0(typescript@7.0.2)
       '@lexical/selection': 0.48.0(typescript@7.0.2)
       lexical: 0.48.0(typescript@7.0.2)
-      yjs: 13.6.29
+      yjs: 13.6.32
     optionalDependencies:
       typescript: 7.0.2
 
@@ -10024,7 +10099,7 @@ snapshots:
       '@types/react': 19.2.18
       react: 19.2.8
 
-  '@mdxeditor/editor@4.2.1(@codemirror/language@6.12.4)(@lezer/highlight@1.2.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(yjs@13.6.29)':
+  '@mdxeditor/editor@4.2.1(@codemirror/language@6.12.4)(@lezer/highlight@1.2.3)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(yjs@13.6.32)':
     dependencies:
       '@codemirror/commands': 6.11.0
       '@codemirror/lang-markdown': 6.5.2
@@ -10039,7 +10114,7 @@ snapshots:
       '@lexical/list': 0.48.0(typescript@7.0.2)
       '@lexical/markdown': 0.48.0(typescript@7.0.2)
       '@lexical/plain-text': 0.48.0(typescript@7.0.2)
-      '@lexical/react': 0.48.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(yjs@13.6.29)
+      '@lexical/react': 0.48.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@7.0.2)(yjs@13.6.32)
       '@lexical/rich-text': 0.48.0(typescript@7.0.2)
       '@lexical/selection': 0.48.0(typescript@7.0.2)
       '@lexical/utils': 0.48.0(typescript@7.0.2)
@@ -14448,6 +14523,57 @@ snapshots:
       powershell-utils: 0.2.0
       wsl-utils: 1.0.0
 
+  opencode-ai@1.18.17:
+    optionalDependencies:
+      opencode-darwin-arm64: 1.18.17
+      opencode-darwin-x64: 1.18.17
+      opencode-darwin-x64-baseline: 1.18.17
+      opencode-linux-arm64: 1.18.17
+      opencode-linux-arm64-musl: 1.18.17
+      opencode-linux-x64: 1.18.17
+      opencode-linux-x64-baseline: 1.18.17
+      opencode-linux-x64-baseline-musl: 1.18.17
+      opencode-linux-x64-musl: 1.18.17
+      opencode-windows-arm64: 1.18.17
+      opencode-windows-x64: 1.18.17
+      opencode-windows-x64-baseline: 1.18.17
+
+  opencode-darwin-arm64@1.18.17:
+    optional: true
+
+  opencode-darwin-x64-baseline@1.18.17:
+    optional: true
+
+  opencode-darwin-x64@1.18.17:
+    optional: true
+
+  opencode-linux-arm64-musl@1.18.17:
+    optional: true
+
+  opencode-linux-arm64@1.18.17:
+    optional: true
+
+  opencode-linux-x64-baseline-musl@1.18.17:
+    optional: true
+
+  opencode-linux-x64-baseline@1.18.17:
+    optional: true
+
+  opencode-linux-x64-musl@1.18.17:
+    optional: true
+
+  opencode-linux-x64@1.18.17:
+    optional: true
+
+  opencode-windows-arm64@1.18.17:
+    optional: true
+
+  opencode-windows-x64-baseline@1.18.17:
+    optional: true
+
+  opencode-windows-x64@1.18.17:
+    optional: true
+
   os-paths@4.4.0: {}
 
   oxc-parser@0.127.0:
@@ -15833,7 +15959,7 @@ snapshots:
 
   yallist@3.1.1: {}
 
-  yjs@13.6.29:
+  yjs@13.6.32:
     dependencies:
       lib0: 0.2.117
 
