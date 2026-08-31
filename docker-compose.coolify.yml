@@ -16,12 +16,12 @@ services:
       dockerfile: Dockerfile.coolify
     container_name: paperclip
     restart: unless-stopped
-    pids_limit: 2048
 
     deploy:
       resources:
         limits:
           memory: 4G
+          pids: 2048
         reservations:
           memory: 2G
 
@@ -36,10 +36,10 @@ services:
       SERVE_UI: "true"
 
       # ── Auth secret (REQUIRED) ──
-      BETTER_AUTH_SECRET: "${SERVICE_PASSWORD_BETTER_AUTH_SECRET}"
+      BETTER_AUTH_SECRET: "${SERVICE_PASSWORD_BETTER_AUTH_SECRET:-changeme}"
 
       # ── Public URL (REQUIRED — set to your Coolify FQDN) ──
-      PAPERCLIP_PUBLIC_URL: "${SERVICE_FQDN_PAPERCLIP_3100}"
+      PAPERCLIP_PUBLIC_URL: "${SERVICE_FQDN_PAPERCLIP_3100:-http://localhost:3100}"
 
       # ── Deployment ──
       PAPERCLIP_DEPLOYMENT_MODE: "authenticated"
