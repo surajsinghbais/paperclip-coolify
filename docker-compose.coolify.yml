@@ -1,0 +1,72 @@
+# ============================================================
+#  Paperclip — Coolify Auto-Deploy Docker Compose
+# ============================================================
+#  Coolify setup:
+#    1. Create new resource → "Docker Compose"
+#    2. Point to this repo, branch: master
+#    3. Set Compose file path: docker-compose.coolify.yml
+#    4. Add env vars in Coolify (see below)
+#    5. Deploy — everything is automatic
+# ============================================================
+
+services:
+  paperclip:
+    build:
+      context: .
+      dockerfile: Dockerfile.coolify
+    container_name: paperclip
+    restart: unless-stopped
+    pids_limit: 2048
+
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
+    ports:
+      - "3100:3100"
+
+    environment:
+      # ── Core (auto-configured) ──
+      HOST: "0.0.0.0"
+      NODE_ENV: "production"
+      PAPERCLIP_HOME: "/paperclip"
+      SERVE_UI: "true"
+
+      # ── Auth secret (REQUIRED) ──
+      BETTER_AUTH_SECRET: "${SERVICE_PASSWORD_BETTER_AUTH_SECRET}"
+
+      # ── Public URL (REQUIRED — set to your Coolify FQDN) ──
+      PAPERCLIP_PUBLIC_URL: "${SERVICE_FQDN_PAPERCLIP_3100}"
+
+      # ── Deployment ──
+      PAPERCLIP_DEPLOYMENT_MODE: "authenticated"
+      PAPERCLIP_DEPLOYMENT_EXPOSURE: "public"
+      PAPERCLIP_ALLOWED_HOSTNAMES: "${PAPERCLIP_ALLOWED_HOSTNAMES:-}"
+
+      # ── Auto-onboard on first boot ──
+      PAPERCLIP_AUTO_ONBOARD: "true"
+
+      # ── LLM keys (at least one needed for agents) ──
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
+
+      # ── Telemetry ──
+      PAPERCLIP_TELEMETRY_DISABLED: "1"
+
+    volumes:
+      - paperclip-data:/paperclip
+
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:3100/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 15
+      start_period: 180s
+
+volumes:
+  paperclip-data:
+    driver: local
